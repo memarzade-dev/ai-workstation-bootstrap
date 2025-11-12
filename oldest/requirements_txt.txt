@@ -1,0 +1,79 @@
+# AI Workstation Bootstrap — Production Requirements
+# Version: 3.1.0
+# Last tested: 2025-01-30
+# Python: 3.8-3.12 compatible
+# CUDA: 12.1+ (Linux/Windows NVIDIA)
+# MPS: macOS Apple Silicon native support
+
+# =============================================================================
+# Core Deep Learning Framework
+# =============================================================================
+# PyTorch 2.5.1 — Stable release with MPS/CUDA 12.1 support
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+
+# =============================================================================
+# Transformers & NLP Stack
+# =============================================================================
+# Hugging Face ecosystem — tested together
+transformers==4.46.3
+tokenizers==0.20.3
+safetensors==0.4.5
+
+# Acceleration libraries
+accelerate==1.1.1
+
+# =============================================================================
+# Quantization & Memory Optimization
+# =============================================================================
+# bitsandbytes 0.44.1 — Latest stable with CUDA 12.1 compatibility
+# Note: macOS builds are CPU-only (expected behavior)
+bitsandbytes==0.44.1
+
+# =============================================================================
+# System Utilities & Diagnostics
+# =============================================================================
+psutil==6.1.0
+
+# =============================================================================
+# Development & Interactive Tools (Optional)
+# =============================================================================
+# Uncomment if you want Jupyter/IPython in your environment
+# ipython==8.29.0
+# jupyter==1.1.1
+# notebook==7.2.2
+
+# =============================================================================
+# Additional ML Libraries (Optional)
+# =============================================================================
+# Uncomment as needed for specific workflows
+# numpy==1.26.4
+# pandas==2.2.3
+# scikit-learn==1.5.2
+# matplotlib==3.9.2
+# pillow==10.4.0
+
+# =============================================================================
+# Installation Notes
+# =============================================================================
+# 
+# For CUDA (Linux/Windows with NVIDIA):
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
+#
+# For macOS (MPS/Metal):
+#   pip install -r requirements.txt
+#
+# For CPU-only (any platform):
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+#
+# Version Compatibility Matrix:
+#   PyTorch 2.5.1 + CUDA 12.1 ✓
+#   PyTorch 2.5.1 + MPS (Metal) ✓
+#   Transformers 4.46.3 + PyTorch 2.5.1 ✓
+#   bitsandbytes 0.44.1 + CUDA 12.1 ✓
+#
+# Known Issues:
+#   - bitsandbytes on macOS: CPU-only, slower performance expected
+#   - Windows: Requires Visual C++ 14.0+ for some packages
+#   - Older CUDA (11.x): Use torch==2.1.0 with cu118 index instead
